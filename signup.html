@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Rubik:400,700"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="login-form">
+      <form
+        action="signup2.php"
+        method="POST"
+        enctype="multipart/form-data"
+        onsubmit="return validateForm()"
+      >
+        <h1>Sign Up</h1>
+        <div class="content">
+          <div class="input-field">
+            <input
+              type="text"
+              name="aname"
+              placeholder="Admin Name"
+              autocomplete="nope"
+            />
+          </div>
+          <div class="input-field">
+            <input type="text" name="cname" placeholder="company name" />
+          </div>
+          <div
+            class="input-field"
+            style="color: rgba(0, 0, 0, 0.7); right: 0px; position: relative"
+          >
+            <label style="display: flex; text-transform: uppercase"
+              >Comapny logo:</label
+            >
+            <input type="file" name="image" accept="image/*" />
+          </div>
+          <div class="input-field">
+            <input
+              type="text"
+              name="crgno"
+              placeholder="company Registration No"
+            />
+          </div>
+          <div class="input-field">
+            <input type="email" name="email" placeholder="email" />
+          </div>
+          <div class="input-field">
+            <input type="text" name="ph_no" placeholder="phone number" />
+          </div>
+          <div class="input-field">
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Password"
+            />
+          </div>
+          <div class="input-field">
+            <input
+              type="password"
+              name="repassword"
+              id="repassword"
+              placeholder="Retype-Password"
+            />
+            <span id="passwordError" style="color: red"></span>
+          </div>
+        </div>
+        <div class="action">
+          <a onclick="window.location.href='index.html';">Sign In</a>
+          <a href="#" id="signInLink">Sign up</a>
+        </div>
+        <button type="submit" id="signInButton" style="display: none"></button>
+      </form>
+    </div>
+    <script>
+      function validateForm() {
+        var password = document.getElementById("password").value;
+        var repassword = document.getElementById("repassword").value;
+
+        if (password !== repassword) {
+          document.getElementById("passwordError").innerHTML =
+            "Passwords does not match.";
+          return false;
+        } else {
+          document.getElementById("passwordError").innerHTML = "";
+          return true;
+        }
+      }
+
+      document
+        .getElementById("signInLink")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          document.getElementById("signInButton").click();
+        });
+    </script>
+  </body>
+</html>
